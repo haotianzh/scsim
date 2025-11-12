@@ -50,7 +50,7 @@ std-read-depth rnd-seed fbetabinomial
 | Parameter            | Description                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------- |
 | `tree-file`          | Input tree file in **Newick** format with branch lengths                                     |
-| `numsites`           | Number of somatic single nucleotide variants (SNVs)                                          |
+| `num-sites`           | Number of somatic single nucleotide variants (SNVs)                                          |
 | `num-variants-per-site` | Number of variants per site                                                                  |
 | `error-rate`         | Genotype error rate                                                                          |
 | `dropout-rate`       | Genotype dropout rate                                                                        |
