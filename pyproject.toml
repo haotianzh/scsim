@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scsim"     
+dynamic = ["version"]     
+description = "Simulator of single-cell DNA sequencing data"
+readme = "README.md" 
+requires-python = ">=3.6" 
+license = { text = "GPL3" }
+authors = [
+    { name = "Haotian Zhang", email = "haotianzh@uconn.edu" },
+    { name = "Yufeng Wu", email = "yufeng.wu@uconn.edu" }
+]
+keywords = ["cell lineage tree", "simulator", "single-cell DNA sequencing", "SNV", "CNA"]
+
+
+[tool.setuptools.dynamic]
+version = {attr = "scsim.__version__"}
+
+[project.urls]
+Homepage = "https://github.com/yufengwudcs/ScisTree2"
+"Bug Tracker" = "https://github.com/yufengwudcs/ScisTree2/issues"

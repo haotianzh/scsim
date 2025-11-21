@@ -1,0 +1,7 @@
+build/
+.vscode/
+**/__pycache__/
+**/bin
+scsim.egg-info/
+tmp*
+test*
