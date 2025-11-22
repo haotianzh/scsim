@@ -58,7 +58,7 @@ class CustomBuild(build_py):
         if sys.platform == "win32":
             # Windows: Use nmake
             build_cmd = ["cl", "scsim.cpp", "/O2", "/Fe:scsim.exe"]
-            clean_cmd = ["rm", "*.obj"]
+            clean_cmd = ["del", "*.obj"]
             binary_name_src = "scsim.exe"
             binary_name_dest = "scsim.exe"
         else:
