@@ -42,7 +42,7 @@ clang++ src/scsim.cpp -O3 -o scsim/bin/scsim
 # --- WINDOWS BUILD ---
 [tool.cibuildwheel.windows]
 before-build = """
-mkdir scsim\\bin & \
+if not exist scsim\\bin mkdir scsim\\bin && \
 cl src/scsim.cpp /O2 /Fe:scsim/bin/scsim.exe
 """
 

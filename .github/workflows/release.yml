@@ -35,16 +35,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      # --- DEBUG STEP START ---
-      # This will print the file contents to the Action logs.
-      # You can check this in the GitHub UI to confirm the 'yum' line is truly gone.
+      - name: Setup MSVC (Windows)
+        uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+
       - name: DEBUG - Check pyproject.toml
         shell: bash
         run: |
           echo "=== CONTENTS OF pyproject.toml ==="
           cat pyproject.toml
           echo "=================================="
-      # --- DEBUG STEP END ---
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.19.0
