@@ -6,7 +6,7 @@ from .tree import BaseTree
 
 
 def get_executable():
-    executable = os.path.join(os.path.dirname(__file__), 'bin', 'scsim')
+    executable = os.path.join(os.path.dirname(__file__), "bin", "scsim")
     return executable
 
 
@@ -36,8 +36,7 @@ def simulate(
     executable=None,
 ):
     if executable is None:
-        executable = os.path.join(os.path.dirname(__file__), 'bin', 'scsim')
-    print(executable)
+        executable = os.path.join(os.path.dirname(__file__), "bin", "scsim")
     assert os.path.exists(executable), "scism not found."
     tree = util.relabel(tree, offset=1)
     cn = []
@@ -68,9 +67,13 @@ def simulate(
             g = line.strip().split("=")[1].strip()[1:-1]
             g0, g1 = (g.split(",")[0]), int(g.split(",")[1])
             tg.append([g0, g1])
-    reads_wild = np.array(reads_wild).reshape(nsite, -1, 1)
-    reads_mut = np.array(reads_mut).reshape(nsite, -1, 1)
-    cn = np.array(cn).reshape(nsite, -1, 1)
-    data = np.concatenate([reads_wild, reads_mut, cn], axis=-1)
+    reads_wild = np.array(reads_wild).reshape(nsite, -1)
+    reads_mut = np.array(reads_mut).reshape(nsite, -1)
+    cn = np.array(cn).reshape(nsite, -1)
     tg = np.array(tg, dtype=int).reshape(nsite, -1, 2)
-    return data, tg
+    return {
+        "wild_counts": reads_wild,
+        "mutant_counts": reads_mut,
+        "true_genotype": tg,
+        "true_tree": tree.output(branch_length_func=lambda x: x.branch),
+    }

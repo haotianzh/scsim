@@ -5,3 +5,4 @@ build/
 scsim.egg-info/
 tmp*
 test*
+dist

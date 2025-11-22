@@ -1,8 +1,7 @@
 from collections import OrderedDict, defaultdict
-from .node import Node
-import pptree
 import copy
 import _pickle as cPickle
+from .node import Node
 
 
 def deepcopy(obj):

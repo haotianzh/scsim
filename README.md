@@ -81,3 +81,26 @@ Below is an example command demonstrating a typical simulation run:
 Example Description:
 This example simulates a dataset with: 10 cells, 5 somatic SNV sites (1 variant per site). Genotyping error rate of 1% and dropout rate of 40%. Copy number increase and decrease rates of 0.5 and 0.2, respectively. Mean sequencing depth of 10 reads per locus with 4 as standard deviation. Deterministic seed (101013) for reproducibility.
 The output will contain simulated single-cell genotypes and read counts consistent with the provided tree and mutation parameters.
+
+
+
+## Python Interface
+
+We also provide a Python wrapper for the simulator. You can install the `scsim` package directly from PyPI.  
+Note that a working **C++ compiler (`g++`) is required**. If your system does not have one, we recommend installing it via Conda:
+
+```bash
+conda install -c conda-forge cxx-compiler
+```
+
+Then, install `scsim` in your conda env:
+```bash
+pip install scsim
+```
+
+### Usage in Python
+```python
+import scsim 
+tree = scsim.get_random_binary_tree(10)   # generate a tree with 10 leaves.
+data = scsim.simulate(tree, n_site=100)   # simulate reads for 100 sites with default parameters.
+```

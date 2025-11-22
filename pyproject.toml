@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "scsim"     
 dynamic = ["version"]     
-description = "Simulator of single-cell DNA sequencing data"
+description = "Simulator for single-cell DNA sequencing data"
 readme = "README.md" 
 requires-python = ">=3.6" 
 license = { text = "GPL3" }
@@ -15,10 +15,26 @@ authors = [
 ]
 keywords = ["cell lineage tree", "simulator", "single-cell DNA sequencing", "SNV", "CNA"]
 
+dependencies = [
+    'numpy',
+]
 
 [tool.setuptools.dynamic]
 version = {attr = "scsim.__version__"}
 
+[tool.cibuildwheel]
+# Only build for Python 3.10 and higher (adjust as needed)
+build = "cp310-* cp311-* cp312-* cp313-*"
+
+# Skip 32-bit builds (usually safe to skip these days)
+skip = "*-win32 *-manylinux_i686"
+
+[tool.cibuildwheel.linux]
+# On Linux, we might need to install C++ tools before building
+# This runs inside the Docker container before compiling
+before-all = "yum install -y gcc-c++"
+
+
 [project.urls]
-Homepage = "https://github.com/yufengwudcs/ScisTree2"
-"Bug Tracker" = "https://github.com/yufengwudcs/ScisTree2/issues"
+Homepage = "https://github.com/haotianzh/scsim"
+"Bug Tracker" = "https://github.com/haotianzh/scsim/issues"
