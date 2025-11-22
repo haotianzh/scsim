@@ -23,18 +23,12 @@ dependencies = [
 version = {attr = "scsim.__version__"}
 
 [tool.cibuildwheel]
-# Only build for Python 3.10 and higher (adjust as needed)
 build = "cp36-* cp37-* cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
 
-# Skip 32-bit builds and PyPy to save CI time
 skip = "*-win32 pp*"
 
 # --- LINUX BUILD ---
 [tool.cibuildwheel.linux]
-# 1. Install g++
-# before-all = "yum install -y gcc-c++"
-# 2. Create the bin directory
-# 3. Compile directly into the package folder
 before-build = """
 mkdir -p scsim/bin && \
 g++ src/scsim.cpp -O3 -o scsim/bin/scsim
@@ -49,8 +43,6 @@ clang++ src/scsim.cpp -O3 -o scsim/bin/scsim
 
 # --- WINDOWS BUILD ---
 [tool.cibuildwheel.windows]
-# Windows uses 'cl' (MSVC compiler).
-# /Fe: specifies the output filename (Must be .exe)
 before-build = """
 mkdir scsim\\bin & \
 cl src/scsim.cpp /O2 /Fe:scsim/bin/scsim.exe
