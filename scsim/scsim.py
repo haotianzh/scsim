@@ -37,7 +37,7 @@ def simulate(
 ):
     if executable is None:
         executable = os.path.join(os.path.dirname(__file__), "bin", "scsim")
-    assert os.path.exists(executable), "scism not found."
+    assert os.path.exists(executable), "scsim binary not found."
     tree = util.relabel(tree, offset=1)
     cn = []
     reads_wild = []

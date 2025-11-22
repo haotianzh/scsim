@@ -44,7 +44,7 @@ setup(
     packages=[PACKAGE_DIR],
     # cmdclass={"build_py": BuildWithMake},
     package_data={
-        PACKAGE_NAME: ["bin/scsim"],  # Corrected path
+        PACKAGE_NAME: ["bin/*"],  # Corrected path
     },
     include_package_data=False,
     distclass=BinaryDistribution,
