@@ -47,4 +47,5 @@ setup(
         PACKAGE_NAME: ["bin/scsim"],  # Corrected path
     },
     include_package_data=True,
+    distclass=BinaryDistribution,
 )
