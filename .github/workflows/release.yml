@@ -3,11 +3,9 @@ name: Build and Publish
 on:
   release:
     types: [published]
-  # Allows you to run this manually from the Actions tab for testing
   workflow_dispatch:
 
 jobs:
-  # JOB 1: Build the source distribution (tar.gz)
   build_sdist:
     name: Build Source Distribution
     runs-on: ubuntu-latest
@@ -26,44 +24,52 @@ jobs:
           name: cibw-sdist
           path: dist/*.tar.gz
 
-  # JOB 2: Build the wheels (binary .whl) for all platforms
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # This will create 3 parallel jobs: one for Linux, Windows, and Mac
         os: [ubuntu-latest, windows-latest, macos-latest]
     
     steps:
       - uses: actions/checkout@v4
       
+      # --- DEBUG STEP START ---
+      # This will print the file contents to the Action logs.
+      # You can check this in the GitHub UI to confirm the 'yum' line is truly gone.
+      - name: DEBUG - Check pyproject.toml
+        shell: bash
+        run: |
+          echo "=== CONTENTS OF pyproject.toml ==="
+          cat pyproject.toml
+          echo "=================================="
+      # --- DEBUG STEP END ---
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.19.0
-        # Env vars to control the build if you didn't use pyproject.toml
         env:
-          CIBW_SKIP: "*-win32 *-manylinux_i686"
+          # Only keep the skip directive here if you want
+          # ALL other config should come from pyproject.toml
+          CIBW_SKIP: "*-win32 pp*"
 
       - uses: actions/upload-artifact@v4
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
 
-  # JOB 3: Upload everything to PyPI
   publish_to_pypi:
     needs: [build_wheels, build_sdist]
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/project/scsim
+      url: https://pypi.org/p/scsim
     permissions:
-      id-token: write  # IMPORTANT: Required for Trusted Publishing
+      id-token: write
     
     steps:
       - name: Download all the dists
         uses: actions/download-artifact@v4
         with:
-          # merging all artifacts into one 'dist' folder
           pattern: cibw-*
           path: dist
           merge-multiple: true
