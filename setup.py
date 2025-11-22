@@ -57,10 +57,10 @@ class CustomBuild(build_py):
 
         if sys.platform == "win32":
             # Windows: Use nmake
-            build_cmd = ["nmake", "/f", "Makefile.win"]
-            clean_cmd = ["nmake", "/f", "Makefile.win", "clean"]
-            binary_name_src = "scistree.exe"
-            binary_name_dest = "scistree.exe"
+            build_cmd = ["cl", "scsim.cpp", "/O2", "/Fe:scsim.exe"]
+            clean_cmd = ["rm", "*.obj"]
+            binary_name_src = "scsim.exe"
+            binary_name_dest = "scsim.exe"
         else:
             # Linux/Mac: Use standard make
             build_cmd = ["g++", "scsim.cpp", "-O3", "-o", "scsim"]
