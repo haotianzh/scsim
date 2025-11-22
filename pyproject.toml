@@ -32,7 +32,7 @@ skip = "*-win32 pp*"
 # --- LINUX BUILD ---
 [tool.cibuildwheel.linux]
 # 1. Install g++
-before-all = "yum install -y gcc-c++"
+# before-all = "yum install -y gcc-c++"
 # 2. Create the bin directory
 # 3. Compile directly into the package folder
 before-build = """
