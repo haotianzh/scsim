@@ -15,13 +15,13 @@
 #include <random>
 
 #ifdef _WIN32
-#define NOMINMAX
+    #define NOMINMAX
 
-#include <io.h>
-#include <process.h>
-#include <windows.h>
-#else
-#include <unistd.h>
+    #include <io.h>
+    #include <process.h>
+    #include <windows.h>
+    #else
+    #include <unistd.h>
 #endif
 
 using namespace std;
