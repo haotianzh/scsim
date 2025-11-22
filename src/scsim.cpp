@@ -13,15 +13,14 @@
 #include <set>
 #include <queue>
 #include <random>
+
+
 #ifdef _WIN32
+    #define NOMINMAX 
+    
     #include <io.h>
     #include <process.h>
-    #include <windows.h> // Often needed for Sleep() if you used sleep()
-    
-    // Windows usually maps 'unistd' functions to underscore versions
-    // If you get errors about 'access' or 'F_OK', uncomment these:
-    // #define access _access
-    // #define F_OK 0
+    #include <windows.h>
 #else
     #include <unistd.h>
 #endif
