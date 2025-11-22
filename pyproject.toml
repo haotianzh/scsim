@@ -24,7 +24,7 @@ version = {attr = "scsim.__version__"}
 
 [tool.cibuildwheel]
 # Only build for Python 3.10 and higher (adjust as needed)
-build = "cp310-* cp311-* cp312-* cp313-*"
+build = "cp36-* cp37-* cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
 
 # Skip 32-bit builds (usually safe to skip these days)
 skip = "*-win32 *-manylinux_i686"
