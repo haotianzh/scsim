@@ -7,7 +7,7 @@ name = "scsim"
 dynamic = ["version"]     
 description = "Simulator for single-cell DNA sequencing data"
 readme = "README.md" 
-requires-python = ">=3.6" 
+requires-python = ">=3.8" 
 license = { text = "GPL3" }
 authors = [
     { name = "Haotian Zhang", email = "haotianzh@uconn.edu" },
@@ -23,8 +23,6 @@ dependencies = [
 version = {attr = "scsim.__version__"}
 
 [tool.cibuildwheel]
-build = "cp36-* cp37-* cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
-
 skip = "*-win32 pp*"
 
 # --- LINUX BUILD ---
