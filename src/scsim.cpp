@@ -7,12 +7,26 @@
 #include <string>
 #include <sys/types.h>
 #include <time.h>
-#include <unistd.h>
+// #include <unistd.h>
 #include <cmath>
 #include <map>
 #include <set>
 #include <queue>
 #include <random>
+#ifdef _WIN32
+    #include <io.h>
+    #include <process.h>
+    #include <windows.h> // Often needed for Sleep() if you used sleep()
+    
+    // Windows usually maps 'unistd' functions to underscore versions
+    // If you get errors about 'access' or 'F_OK', uncomment these:
+    // #define access _access
+    // #define F_OK 0
+#else
+    #include <unistd.h>
+#endif
+
+
 using namespace std;
 
 
