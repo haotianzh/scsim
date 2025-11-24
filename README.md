@@ -5,7 +5,8 @@ It is designed for testing and benchmarking phylogenetic and clonal inference me
 
 scsim was originally developed during the development of ScisTree (https://github.com/yufengwudcs/ScisTree). If you use scsim, please cite:
 
-Accurate and Efficient Cell Lineage Tree Inference from Noisy Single Cell Data: the Maximum Likelihood Perfect Phylogeny Approach, Yufeng Wu, Bioinformatics, https://doi.org/10.1093/bioinformatics/btz676, 36(3):742-750, 2020.
+
+>*Accurate and Efficient Cell Lineage Tree Inference from Noisy Single Cell Data: the Maximum Likelihood Perfect Phylogeny Approach, Yufeng Wu, Bioinformatics, https://doi.org/10.1093/bioinformatics/btz676, 36(3):742-750, 2020.*
 
 ---
 
